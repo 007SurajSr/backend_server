@@ -45,7 +45,7 @@
 const express = require('express')
 const mongodb = require('mongoose')
 const cors = require ('cors')
-const UserModel = require('./models/Users')
+const UserModel = require('./models/User')
 
 const app = express()
 app.use(cors())
@@ -57,9 +57,24 @@ mongodb.connect("mongodb://127.0.0.1:27017/crud")
  
 const port = 3000
 
-app.get('/', (req, res) => {
-  res.send('Hello World Suraj !')
-})
+app.use(express.json())
+
+
+//Available routes
+app.use('/api/auth',require('./Routes/auth'))
+app.use('/api/notes',require('./Routes/notes'))
+
+//  app.get('/', (req, res) => {
+//    res.send('Hello World Suraj!')
+//  })
+
+// app.get('/api/v1/login', (req, res) => {
+//     res.send('Hello World Henry!')
+//   })
+
+//   app.get('/api/v1/signin', (req, res) => {
+//     res.send('Hello World Sameer !')
+//   })
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
