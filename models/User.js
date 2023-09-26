@@ -11,9 +11,7 @@
     email :{
         type: String,
         require: true,
-        
-         
-        
+    
     },
     password :{
         type: String,
